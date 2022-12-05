@@ -28,6 +28,7 @@ def clean_data(df):
         categories[column] = categories[column].astype(str).str[-1]
         # convert column from string to numeric
         categories[column] = categories[column].astype(int)
+    categories.replace(2, 1, inplace=True)
     
     # drop the original categories column from 'df'
     df = df.drop('categories', axis = 1)
