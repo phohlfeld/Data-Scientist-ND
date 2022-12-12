@@ -40,8 +40,18 @@ I used the Udacity Workspace, they already had the data processed ready to use.
 
 Already done
 
-### The config file
 
+### Analysis
+
+
+I used random 2k samples from the dataset to analyse.
+
+1. Dataset is skewed in terms of number of samples available for each class. Class 1 (cars) has maximum samples. Class 4 (cyclists) is very rare in the dataset.
+
+<img src="images/class_dist.png" width=50% height=50%>
+
+
+### The config file
 
 The config is `pipeline.config`, which is the config for a SSD Resnet 50 640x640 model. 
 
@@ -69,12 +79,15 @@ python experiments/model_main_tf2.py --model_dir=experiments/reference/ --pipeli
 **Note**: Both processes will display some Tensorflow warnings, which can be ignored. You may have to kill the evaluation script manually using
 `CTRL+C`.
 
-To monitor the training, you can launch a tensorboard instance by running `python -m tensorboard.main --logdir experiments/reference/`. You will report your findings in the writeup.
+To monitor the training, you can launch a tensorboard instance by running `python -m tensorboard.main --logdir experiments/reference/`.
 
+![Loss](images/loss.png)
+
+<img src="images/lr.png" width=50% height=50%>
 
 ### Augmentation
 
-Explored the Object Detection API and applied many different augmentations
+Explored the Object Detection API and applied many different augmentations to prevent overfitting
 
 Used various augmentation strategies:
 1. random_horizontal_flip
@@ -91,9 +104,9 @@ Rate decay: Cosine. Changed warmup learning rate to 5e-4, warmup steps to 200 an
 
 Stopped training at 2500 steps.
 
-![Loss](images/loss.png)
+![Loss](images/loss_exp1.png)
 
-<img src="images/lr.png" width=50% height=50%>
+<img src="images/lr_exp1.png" width=50% height=50%>
 
 
 
